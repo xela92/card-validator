@@ -18,10 +18,17 @@ npm install card-validator
 
 ### Using a CommonJS build tool (browserify, webpack, etc)
 
-```javascript
-var valid = require("card-validator");
+```typescript
+import { creditCardType,
+         cardholderName,
+         cardNumber,
+         expirationDate,
+         expirationMonth,
+         expirationYear,
+         cvv,
+         postalCode } from 'card-validator-es6';
 
-var numberValidation = valid.number("4111");
+var numberValidation = cardNumber("4111");
 
 if (!numberValidation.isPotentiallyValid) {
   renderInvalidCardNumber();
@@ -40,7 +47,7 @@ if (numberValidation.card) {
 
 #### `valid.number(value: string, [options: object]): object`
 
-```javascript
+```typescript
 {
   card: {
     niceType: 'American Express',
@@ -76,8 +83,8 @@ You can optionally pass `maxLength` as a property of an object as a second argum
 
 If a card brand has a normal max length that is shorter than the passed in max length, the validator will use the shorter one. For instance, if a `maxLength` of `16` is provided, the validator will still use `15` as the max length for American Express cards.
 
-```javascript
-valid.number(<Maestro Card with 19 Digits>, {maxLength: 16});
+```typescript
+cardNumber('<Maestro Card with 19 Digits>', {maxLength: 16});
 
 {
   card: {
@@ -355,7 +362,7 @@ The `postalCode` validation essentially tests for a valid string greater than 3 
 You can optionally pass `minLength` as a property of an object as a second argument. This will override the default min length of 3.
 
 ```javascript
-valid.postalCode('123', {minLength: 5});
+postalCode('123', {minLength: 5});
 
 {
   isPotentiallyValid: true,
@@ -368,7 +375,7 @@ valid.postalCode('123', {minLength: 5});
 Card Validator exposes the [`credit-card-type` module](https://github.com/braintree/credit-card-type) as `creditCardType`. You can add custom card brands by [utilizing the `addCard` method](https://github.com/braintree/credit-card-type#adding-card-types).
 
 ```javascript
-valid.creditCardType.addCard({
+creditCardType.addCard({
   niceType: "NewCard",
   type: "new-card",
   patterns: [1234],
