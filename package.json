@@ -1,14 +1,14 @@
 {
-  "name": "card-validator",
-  "version": "8.1.1",
+  "name": "card-validator-es6",
+  "version": "8.1.5",
   "description": "A library for validating credit card fields",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "git@github.com:braintree/card-validator"
+    "url": "git@github.com:xela92/card-validator"
   },
-  "homepage": "https://github.com/braintree/card-validator",
+  "homepage": "https://github.com/xela92/card-validator",
   "scripts": {
     "prepublishOnly": "npm run build",
     "prebuild": "prettier --write .",
