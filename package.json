@@ -1,6 +1,6 @@
 {
   "name": "card-validator-es6",
-  "version": "8.1.6",
+  "version": "8.1.7",
   "description": "A library for validating credit card fields",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

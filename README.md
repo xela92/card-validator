@@ -43,11 +43,7 @@ if (numberValidation.card) {
 
 ## API
 
-### `var valid = require('card-validator');`
-
----
-
-#### `valid.number(value: string, [options: object]): object`
+#### `cardNumber(value: string, [options: object]): object`
 
 ```typescript
 {
@@ -66,7 +62,7 @@ if (numberValidation.card) {
 You can optionally pass `luhnValidateUnionPay` as a property of an object as a second argument. This will override the default behavior to ignore luhn validity of UnionPay cards.
 
 ```javascript
-valid.number(<Luhn Invalid UnionPay Card Number>, {luhnValidateUnionPay: true});
+cardNumber(<Luhn Invalid UnionPay Card Number>, {luhnValidateUnionPay: true});
 
 {
   card: {
@@ -253,7 +249,7 @@ A fake session where a user is entering a card number may look like:
 
 ---
 
-#### `valid.cardholderName(value: string): object`
+#### `cardholderName(value: string): object`
 
 The `cardholderName` validation essentially tests for a valid string greater than 0 characters in length that does not look like a card number.
 
@@ -282,7 +278,7 @@ If a cardholder name is longer than 255 characters, it is assumed to be invalid.
 }
 ```
 
-#### `valid.expirationDate(value: string|object, maxElapsedYear: integer): object`
+#### `expirationDate(value: string|object, maxElapsedYear: integer): object`
 
 The `maxElapsedYear` parameter determines how many years in the future a card's expiration date should be considered valid. It has a default value of 19, so cards with an expiration date 20 or more years in the future would not be considered valid. It can be overridden by passing in an `integer` as a second argument.
 
@@ -307,7 +303,7 @@ The `maxElapsedYear` parameter determines how many years in the future a card's 
 
 ---
 
-#### `valid.expirationMonth(value: string): object`
+#### `expirationMonth(value: string): object`
 
 `expirationMonth` accepts 1 or 2 digit months. `1`, `01`, `10` are all valid entries.
 
@@ -321,7 +317,7 @@ The `maxElapsedYear` parameter determines how many years in the future a card's 
 
 ---
 
-#### `valid.expirationYear(value: string, maxElapsedYear: integer): object`
+#### `expirationYear(value: string, maxElapsedYear: integer): object`
 
 `expirationYear` accepts 2 or 4 digit years. `16` and `2016` are both valid entries.
 
@@ -337,7 +333,7 @@ The `maxElapsedYear` parameter determines how many years in the future a card's 
 
 ---
 
-#### `valid.cvv(value: string, maxLength: integer): object`
+#### `cvv(value: string, maxLength: integer): object`
 
 The `cvv` validation by default tests for a numeric string of 3 characters in length. The `maxLength` can be overridden by passing in an `integer` as a second argument. You would typically switch this length from 3 to 4 in the case of an American Express card which expects a 4 digit CID.
 
@@ -350,7 +346,7 @@ The `cvv` validation by default tests for a numeric string of 3 characters in le
 
 ---
 
-#### `valid.postalCode(value: string, [options: object]): object`
+#### `postalCode(value: string, [options: object]): object`
 
 The `postalCode` validation essentially tests for a valid string greater than 3 characters in length.
 
@@ -393,7 +389,7 @@ creditCardType.addCard({
 ## Design decisions
 
 - The default maximum expiration year is 19 years from now.
-- `valid.expirationDate` will only return `month:` and `year:` as strings if the two are valid, otherwise they will be `null`.
+- `expirationDate` will only return `month:` and `year:` as strings if the two are valid, otherwise they will be `null`.
 - Since non-US postal codes are alpha-numeric, the `postalCode` will allow non-number characters to be used in validation.
 
 ## Development
