@@ -19,14 +19,16 @@ npm install card-validator
 ### Using a CommonJS build tool (browserify, webpack, etc)
 
 ```typescript
-import { creditCardType,
-         cardholderName,
-         cardNumber,
-         expirationDate,
-         expirationMonth,
-         expirationYear,
-         cvv,
-         postalCode } from 'card-validator-es6';
+import {
+  creditCardType,
+  cardholderName,
+  cardNumber,
+  expirationDate,
+  expirationMonth,
+  expirationYear,
+  cvv,
+  postalCode,
+} from "card-validator-es6";
 
 var numberValidation = cardNumber("4111");
 
